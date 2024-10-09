@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=422, height=625, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Big cases</title>
     <style>
         body {
@@ -15,42 +15,46 @@
         canvas {
             border: 2px solid #000;
             background-color: #fff;
+            width: 100%; 
+            height: auto;
+            max-width: 422px; 
+            max-height: 625px; 
         }
     </style>
 </head>
 <body>
     <h1>Big cases</h1>
-    <canvas id="gameCanvas" width="600" height="400"></canvas>
+    <canvas id="gameCanvas" width="422" height="625"></canvas> 
     <script>
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
 
-        let hamsterX = 50;
-        let hamsterY = 50;
-        const hamsterSize = 20;
+        let pointX = 50;
+        let pointY = 50;
+        const pointSize = 20;
 
         function update() {
-            hamsterX += 2;  // Двигаем хомяка
-            if (hamsterX > canvas.width) {
-                hamsterX = 0;
+            pointX += 2;  
+            if (pointX > canvas.width) {
+                pointX = 0;
             }
         }
 
-        // Рендер игры
+        
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = 'brown';
-            ctx.fillRect(hamsterX, hamsterY, hamsterSize, hamsterSize);
+            ctx.fillRect(pointX, pointY, pointSize, pointSize);
         }
 
-        // Игровой цикл
+        
         function gameLoop() {
             update();
             draw();
             requestAnimationFrame(gameLoop);
         }
 
-        gameLoop(); // Запускаем игру
+        gameLoop(); 
     </script>
 </body>
 </html>
