@@ -59,6 +59,19 @@
             // Пример логики открытия кейса
             alert("Открываем " + caseId);
         }
+         window.onload = function() {
+            // Сообщаем Telegram, что приложение готово
+            Telegram.WebApp.ready();
+
+            // Настраиваем и показываем основную кнопку
+            Telegram.WebApp.MainButton.setText("Отправить данные");
+            Telegram.WebApp.MainButton.show();
+
+            // Обработка клика на кнопку
+            Telegram.WebApp.MainButton.onClick(function() {
+                Telegram.WebApp.sendData("Привет, бот! Это данные из мини-приложения.");
+            });
+        };
     </script>
 
 </body>
