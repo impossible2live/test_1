@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Мое Mini App</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;//aa
+            margin: 0;
+            padding: 0;
+            background-color: var(--tg-theme-bg-color);
+            color: var(--tg-theme-text-color);
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .case-card {
+            background-color: var(--tg-theme-secondary-bg-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 90%;
+            padding: 20px;
+            margin: 10px 0;
+            text-align: center;
+        }
+        .case-card:hover {
+            background-color: var(--tg-theme-hint-color);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="case-card" onclick="openCase('case1')">
+            <h2>Кейс 1</h2>
+            <p>Описание кейса 1</p>
+        </div>
+        <div class="case-card" onclick="openCase('case2')">
+            <h2>Кейс 2</h2>
+            <p>Описание кейса 2</p>
+        </div>
+        <div class="case-card" onclick="openCase('case3')">
+            <h2>Кейс 3</h2>
+            <p>Описание кейса 3</p>
+        </div>
+    </div>
+
+    <script>
+        Telegram.WebApp.ready();
+
+        function openCase(caseId) {
+            alert("Открываем " + caseId);
+        }
+         window.onload = function() {
+            // Сообщаем Telegram, что приложение готово
+            Telegram.WebApp.ready();
+
+            // Настраиваем и показываем основную кнопку
+            Telegram.WebApp.MainButton.setText("Отправить данные");
+            Telegram.WebApp.MainButton.show();
+
+            // Обработка клика на кнопку
+            Telegram.WebApp.MainButton.onClick(function() {
+                Telegram.WebApp.sendData("Привет, бот! Это данные из мини-приложения.");
+            });
+        };
+
+    </script>
+
+</body>
+</html>
